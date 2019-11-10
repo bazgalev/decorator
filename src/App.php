@@ -9,10 +9,21 @@
 namespace App;
 
 
+use App\menu\addons\Limon;
+use App\menu\addons\Mint;
+use App\menu\beverages\BlackTea;
+use App\menu\beverages\GreenTea;
+
 class App
 {
     public function run(): void
     {
-        echo 'Entry point here!' . PHP_EOL;
+        $shop = new Shop();
+
+        $shop->order(new Limon(new GreenTea()));
+
+        $shop->order(new Mint(new Limon(new GreenTea())));
+
+        $shop->order(new Limon(new BlackTea()));
     }
 }
